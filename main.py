@@ -2,12 +2,13 @@ import os
 from aiogram import Bot, Dispatcher, executor, types
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.dispatcher import FSMContext
+from info import BOT_TOKEN
 from aiogram.dispatcher.filters.state import State, StatesGroup
 from bs4 import BeautifulSoup
 import requests
 
 # Токен вашого бота
-API_TOKEN = 'YOUR_TELEGRAM_BOT_TOKEN'
+API_TOKEN = BOT_TOKEN
 
 # Ініціалізація бота та диспетчера
 bot = Bot(token=API_TOKEN)
