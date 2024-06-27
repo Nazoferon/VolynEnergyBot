@@ -51,12 +51,35 @@ async def process_street(message: types.Message, state: FSMContext):
     table = soup.select_one('table.gsc-results-table')
 
     if table:
-        results = []
-        for row in table.find_all("tr")[1:]:
-            columns = row.find_all("td")
-            if len(columns) >= 7:
-                # ... (обробка результатів, аналогічно вашому коду)
-                results.append(result)
+            rows = table.find_all("tr")[1:]  # Пропускаємо заголовок таблиці
+            results = []
+            for row in rows:
+                columns = row.find_all("td")
+                if len(columns) >= 7:  # Переконайтеся, що кількість колонок відповідає очікуванням
+                    district = columns[0].text.strip()
+                    locality = columns[1].text.strip()
+                    street_name = columns[2].text.strip()
+                    date = columns[5].text.strip()
+                    outage_times = columns[6].decode_contents().replace("<br/>", ", ").strip()
+
+                    result = (
+                        f"Населений пункт: {locality}\n"
+                        f"Вулиця: {street_name}\n"
+                        f"Дата відключення: {date}\n"
+                        f"Години відключення: {outage_times}\n"
+                        "----------------------------------------"
+                    )
+                    results.append(result)
+
+            # Збереження результатів в файл
+            project_dir = os.path.abspath(os.path.dirname(__file__))
+            results_file = os.path.join(project_dir, 'results.txt')
+            with open(results_file, 'w', encoding='utf-8') as f:
+                for result in results:
+                    f.write(result + "\n")
+            self.log(f"Results saved to {results_file}")
+        else:
+            self.log("No table found on the page.")
 
         if results:
             await message.reply("\n".join(results))
