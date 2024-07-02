@@ -11,14 +11,15 @@ This Telegram bot provides information on electricity outages based on user inpu
    cd <repository_directory>
    
 2. Create a virtual environment and activate it:
+   ```
   python -m venv venv
   source venv/bin/activate   # On Windows: venv\Scripts\activate
 
-3. Install the required dependencies:
-   '''
+4. Install the required dependencies:
+   ```
    pip install -r requirements.txt
 
-4. Create a file named info.py in the project directory and add your bot token:
+5. Create a file named info.py in the project directory and add your bot token:
 
   # info.py
   BOT_TOKEN = 'YOUR_TELEGRAM_BOT_TOKEN'
