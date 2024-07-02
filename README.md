@@ -53,8 +53,8 @@
 
 # Залежності
 
-   **aiogram:** Фреймворк Telegram Bot API.
-   **beautifulsoup4:** Бібліотека для веб-збирання.
+   **aiogram:** Фреймворк Telegram Bot API. 
+   **beautifulsoup4:** Бібліотека для веб-збирання. 
    **requests:** Бібліотека для створення HTTP запитів.
 
 # Примітки
