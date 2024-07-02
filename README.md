@@ -12,9 +12,10 @@
    ```
    
 2. Створіть віртуальне середовище та активуйте його:
-   
-  python -m venv venv
-  source venv/bin/activate   # У Windows: venv\Scripts\activate
+   ```
+   python -m venv venv
+   source venv/bin/activate   # У Windows: venv\Scripts\activate
+   ```
 
 4. Встановіть необхідні залежності:
    
