@@ -1,25 +1,63 @@
-# Telegram Bot for Electricity Outages
+# Telegram-бот для відключень електроенергії
 
-This Telegram bot provides information on electricity outages based on user inputs for locality and street. The bot scrapes data from a specific website and returns relevant information to the user.
+Цей бот Telegram надає інформацію про відключення електроенергії на основі введених користувачами даних про місцевість і вулицю. Бот збирає дані з певного веб-сайту та повертає відповідну інформацію користувачеві.
 
-## Installation
+## Монтаж
 
-1. Clone the repository:
+1. Клонуйте репозиторій:
 
    ```bash
    git clone <repository_url>
    cd <repository_directory>
+   ```
    
-2. Create a virtual environment and activate it:
-   ```
+2. Створіть віртуальне середовище та активуйте його:
+   
   python -m venv venv
-  source venv/bin/activate   # On Windows: venv\Scripts\activate
+  source venv/bin/activate   # У Windows: venv\Scripts\activate
 
-4. Install the required dependencies:
+4. Встановіть необхідні залежності:
+   
+   ```pip install -r requirements.txt```
+
+5. Створіть файл з іменем info.py у каталозі проекту та додайте свій токен бота:
    ```
-   pip install -r requirements.txt
+   # info.py 
+   BOT_TOKEN = 'YOUR_TELEGRAM_BOT_TOKEN'
+   ```
 
-5. Create a file named info.py in the project directory and add your bot token:
+# Використання
 
-  # info.py
-  BOT_TOKEN = 'YOUR_TELEGRAM_BOT_TOKEN'
+1. Запустити бота:
+   ```
+   python bot.py
+   ```
+
+2. Почніть розмову зі своїм ботом у Telegram, надіславши команду /start.
+3. Дотримуючись підказок, введіть населений пункт і вулицю, щоб отримати інформацію про відключення електроенергії.
+
+
+# Структура проекту
+
+**bot.py:** Основний скрипт бота.
+**info.py:** Містить токен бота (повинен бути створений і відредагований користувачем).
+**results.txt:** Файл, у якому зберігаються результати запиту.
+
+# Логіка бота
+
+   1. Бот запускається командою /start.
+   2. Він пропонує користувачеві ввести населений пункт.
+   3. Після введення населеного пункту користувачеві пропонується ввести вулицю (або «-», якщо не потрібно).
+   4. Потім бот робить запит на вказаний веб-сайт, збирає дані та повертає відповідну інформацію користувачеві.
+   5. Результати зберігаються у файлі results.txt у каталозі проекту.
+
+# Залежності
+
+   **aiogram:** Фреймворк Telegram Bot API.
+   **beautifulsoup4:** Бібліотека для веб-збирання.
+   **requests:** Бібліотека для створення HTTP запитів.
+
+# Примітки
+
+   **Переконайтеся, що URL-адреса веб-сайту та структура HTML не змінені, оскільки це може порушити логіку копіювання.
+   Обов’язково обробляйте будь-які винятки або помилки, які можуть виникнути під час виконання бота, щоб забезпечити безперебійну роботу користувача**
